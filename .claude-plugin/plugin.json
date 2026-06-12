@@ -1,0 +1,14 @@
+{
+  "name": "batch-image-converter",
+  "version": "0.1.0",
+  "description": "Convert and resize a whole folder of images locally with Photopea — WebP/JPG/PNG/SVG/PSD, no upload, free, no Photoshop. HEIC to JPG, PNG to WebP, bulk resize.",
+  "author": "batch-image-converter contributors",
+  "license": "MIT",
+  "keywords": ["image", "convert", "batch", "resize", "webp", "heic", "compress", "photopea", "agent-skill"],
+  "mcpServers": {
+    "photopea": {
+      "command": "npx",
+      "args": ["-y", "photopea-mcp-server"]
+    }
+  }
+}
