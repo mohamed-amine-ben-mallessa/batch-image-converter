@@ -1,8 +1,8 @@
 <h1 align="center">🔄 batch-image-converter</h1>
 
 <p align="center">
-  <b>Convert and resize a whole folder of images — locally, in one command.</b><br>
-  WebP, JPG, PNG, SVG, PSD. Nothing is uploaded. Free, no Photoshop, no API key.
+  <b>"Convert 200 images to WebP" shouldn't mean uploading 200 images to a stranger's server.</b><br>
+  A whole folder converted and resized in one command — WebP, JPG, PNG, SVG, PSD. Nothing leaves your machine.
 </p>
 
 <p align="center">
@@ -13,13 +13,29 @@
   <img src="https://img.shields.io/badge/license-MIT-yellow" alt="MIT">
 </p>
 
+**Claude Code:**
+
+```
+/plugin marketplace add mohamed-amine-ben-mallessa/batch-image-converter
+/plugin install batch-image-converter
+```
+
+**Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts:**
+
+```
+npx skills add mohamed-amine-ben-mallessa/batch-image-converter -g
+```
+
 ---
 
-> **"Convert 200 images to WebP" usually means uploading 200 images to some random
-> website.** This doesn't. Photopea runs the conversion in your own browser — your
-> files never leave your machine — and this repo scripts it over an entire folder.
+## Why this exists
 
-## Why this one's different
+Every "free online converter" is the same deal: your files go to someone's server, you get
+ads, a size cap, a sign-up wall, and a paywalled batch mode.
+
+Photopea decodes and encodes **inside your own browser sandbox** — your files never leave
+your computer, and there's no native codec to install. This repo scripts that over an
+entire folder.
 
 | Online converters | **batch-image-converter** |
 |---|---|
@@ -27,6 +43,7 @@
 | One file at a time / paywalled batch | ✅ **Whole folder** in one command |
 | Ads, size limits, sign-ups | ✅ **Free**, MIT, unlimited |
 | Black-box quality | ✅ You set format, quality, size |
+| Can't be called by your agent | ✅ **Is a skill** your agent already knows |
 
 ## Quick start
 
@@ -55,8 +72,9 @@ is opened, optionally resized, and re-exported into `./out`.
 (anything Photopea can open).
 **Writes:** `png` · `jpg` · `webp` · `psd` · `svg`.
 
-So it doubles as: **HEIC → JPG**, **PNG → WebP** (shrink for the web), **any → PSD**,
-**raster → SVG-wrapped**, plus folder-wide **resize / downscale**.
+So it doubles as: **HEIC → JPG** (the iPhone photo problem), **PNG → WebP** (shrink a whole
+site's assets), **any → PSD**, **raster → SVG-wrapped**, plus folder-wide **resize /
+downscale**.
 
 ## Options
 
@@ -68,24 +86,38 @@ So it doubles as: **HEIC → JPG**, **PNG → WebP** (shrink for the web), **any
 | `--width N --height N` | resize to exact dimensions |
 | `--recursive` | include subfolders |
 
+## Install
+
+| Surface | Install | Updates |
+|---|---|---|
+| **Claude Code** (recommended) | `/plugin marketplace add mohamed-amine-ben-mallessa/batch-image-converter` then `/plugin install batch-image-converter` | `claude plugin update batch-image-converter` |
+| **Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts** | `npx skills add mohamed-amine-ben-mallessa/batch-image-converter -g` | `npx skills update batch-image-converter -g` |
+| **Any MCP agent** | Point it at [`skills/batch-image-converter/SKILL.md`](skills/batch-image-converter/SKILL.md) | `git pull` |
+| **Plain Python** (no agent) | `git clone https://github.com/mohamed-amine-ben-mallessa/batch-image-converter` then run `scripts/convert.py` | `git pull` |
+
+**Requirements:** Node (for `npx`) and Python ≥ 3.8. No API key, no account, no Photoshop.
+
 ## How it works
 
 It drives the free **[Photopea](https://www.photopea.com)** MCP server: open each file →
-(resize) → export in the target format. Photopea does all the decoding/encoding in the
+(resize) → export in the target format. Photopea does all the decoding and encoding in the
 browser sandbox, so there's **no upload and no native codec to install**. Core loop:
 [`scripts/convert.py`](scripts/convert.py).
 
 ## For AI agents
 
 [`skills/batch-image-converter/SKILL.md`](skills/batch-image-converter/SKILL.md) lets an
-agent run conversions on request ("convert this folder to webp under 1600px") with the
+agent run conversions on request — "convert this folder to webp under 1600px" — with the
 exact tool args, no trial and error.
 
-## Related
+## The pack
 
-- 🎨 **[photopea-as-code](https://github.com/mohamed-amine-ben-mallessa/photopea-as-code)** — the full Photopea-as-code toolkit + scripting reference.
-- 🖼️ **[bulk-mockups](https://github.com/mohamed-amine-ben-mallessa/bulk-mockups)** — 1 PSD → N mockups.
-- 📱 **[social-post-factory](https://github.com/mohamed-amine-ben-mallessa/social-post-factory)** — branded social posts in one command.
+| | Repo | One job |
+|---|---|---|
+| 🔄 | **batch-image-converter** (this) | A whole folder converted/resized, 100% locally |
+| 🎨 | [photopea-as-code](https://github.com/mohamed-amine-ben-mallessa/photopea-as-code) | The driver, the recipes, the full scripting reference |
+| 📱 | [social-post-factory](https://github.com/mohamed-amine-ben-mallessa/social-post-factory) | One brand theme → square, story, banner |
+| 🖼️ | [bulk-mockups](https://github.com/mohamed-amine-ben-mallessa/bulk-mockups) | 1 PSD → hundreds of mockups via smart objects |
 
 ## Credits
 
@@ -96,3 +128,9 @@ not affiliated with Photopea or Adobe. Trademarks belong to their owners.
 ## License
 
 MIT.
+
+---
+
+<p align="center">
+  <sub>Built by <a href="https://github.com/mohamed-amine-ben-mallessa">Mohamed Amine Ben Mallessa</a> · ⭐ star it if it kept your files off someone else's server</sub>
+</p>
